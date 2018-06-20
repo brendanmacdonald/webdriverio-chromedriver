@@ -1,42 +1,55 @@
+let mixin = require('xmultiple');
 const Page = require('../page_objects/page');
+const Footer = require('../page_objects/common/footer');
+const Flash = require('../page_objects/common/flash');
 
-class LoginPage extends Page {
+class LoginPage extends mixin(Page, Footer, Flash) {
 
-  /**
-   * Elements
-   */
-  usernameInput() {
-    return browser.element('input#username');
+  get title() {
+    return browser.element('//h2');
   }
-  
-  passwordInput() {
-    return browser.element('input#password');
+  get username() {
+    return browser.element('#username');
   }
-
-  loginButton() {
+  get password() {
+    return browser.element('#password');
+  }
+  get loginButton() {
     return browser.element('//button[contains(., "Login")]');
   }
+  get loginDiv() {
+    return browser.element('div#flash');
+  }
 
-      /**
-     * Functions
-     */
   open() {
     super.open('login') //this will append `login` to the baseUrl to form complete URL
   }
 
+  getTitle() {
+    this.title;
+  }
+
+  checkTitleText() {
+    this.title.getText().should.be.equal('Login Page');
+  }
+
   waitForloginPageToLoad() {
-    if (!this.usernameInput().isVisible()) {
-      this.usernameInput().waitForVisible();
+    if (!this.username.isVisible()) {
+      this.username.waitForVisible();
     }
   }
 
   login(username, password) {
     this.waitForloginPageToLoad();
-    this.usernameInput().setValue(username);
-    this.passwordInput().setValue(password);
-    this.loginButton().click();
+    this.username.setValue(username);
+    this.password.setValue(password);
+    this.loginButton.click();
     browser.pause(2000);
+  }
+
+  verifyLoginBlocked() {
+    this.checkTextInFlash('You must login to view the secure area!');
   }
 }
 
-module.exports = LoginPage
+module.exports = new LoginPage();
