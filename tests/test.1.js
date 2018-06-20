@@ -4,7 +4,7 @@ const SecureAreaPage = require('../page_objects/secure_area_page');
 const username = 'tomsmith';
 const password = 'SuperSecretPassword!'
 describe('The Internet', function () {
-    it('form authentication withut Page Objects', function () {
+    it('form authentication without Page Objects', function () {
         browser.url('/login');
         browser.setValue('input#username', username);
         browser.setValue('input#password', password);
@@ -12,6 +12,7 @@ describe('The Internet', function () {
         browser.getTitle().should.be.equal('The Internet');
         browser.isVisible('div#flash');
         browser.getText('div#flash').should.contain('You logged into a secure area!');
+        browser.click('div#content a > i');
     });
 
     it('form authentication with Page Objects', function () {
@@ -21,5 +22,6 @@ describe('The Internet', function () {
 
         secureAreaPage = new SecureAreaPage();
         secureAreaPage.verifyLoginSuccess();
+        secureAreaPage.logout();
     });
 });

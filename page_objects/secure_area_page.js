@@ -13,6 +13,9 @@ class SecureAreaPage extends Page {
         return browser.element('div#content a > i');
     }
 
+    /**
+     * Functions
+     */
     open() {
         super.open('secure')
     }
@@ -20,6 +23,10 @@ class SecureAreaPage extends Page {
     verifyLoginSuccess() {
         this.secureAreaDiv().isVisible();
         this.secureAreaDiv().getText().should.contain('You logged into a secure area!');
+    }
+
+    logout() {
+        this.logoutButton().click();
     }
 }
 

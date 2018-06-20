@@ -12,7 +12,7 @@ exports.config = {
         }
     }],
     sync: true,
-    logLevel: 'verbose',
+    logLevel: 'silent',
     coloredLogs: true,
     deprecationWarnings: true,
     bail: 0,
@@ -26,14 +26,10 @@ exports.config = {
     path: '/',
     chromeDriverLogs: './logs',
     framework: 'mocha',
-    reporters: ['mochawesome'],
+    reporters: ['dot', 'allure', 'spec'],
     reporterOptions: {
-        mochawesome: {
-            outputDir: './reports/'
-        },
-        mochawesomeOpts: {
-            includeScreenshots: true,
-            screenshotUseRelativePath: true
+        allure: {
+            outputDir: 'allure-results'
         },
     },
     mochaOpts: {

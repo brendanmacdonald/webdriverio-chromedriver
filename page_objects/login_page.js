@@ -8,13 +8,18 @@ class LoginPage extends Page {
   usernameInput() {
     return browser.element('input#username');
   }
+  
   passwordInput() {
     return browser.element('input#password');
   }
+
   loginButton() {
     return browser.element('//button[contains(., "Login")]');
   }
 
+      /**
+     * Functions
+     */
   open() {
     super.open('login') //this will append `login` to the baseUrl to form complete URL
   }
