@@ -7,3 +7,8 @@ npm install
 ```
 npm run test
 ```
+
+### Generate test reports
+```
+npm run report
+```
