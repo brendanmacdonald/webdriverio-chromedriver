@@ -5,11 +5,11 @@ class SecureAreaPage extends Page {
     /**
      * Elements
      */
-    get secureAreaDiv() {
+    secureAreaDiv() {
         return browser.element('div#flash');
     }
 
-    get logoutButton() {
+    logoutButton() {
         return browser.element('div#content a > i');
     }
 
@@ -18,8 +18,8 @@ class SecureAreaPage extends Page {
     }
 
     verifyLoginSuccess() {
-        this.secureAreaDiv.isVisible();
-        this.secureAreaDiv.getText().should.contain('You logged into a secure area!');
+        this.secureAreaDiv().isVisible();
+        this.secureAreaDiv().getText().should.contain('You logged into a secure area!');
     }
 }
 

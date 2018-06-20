@@ -5,13 +5,13 @@ class LoginPage extends Page {
   /**
    * Elements
    */
-  get usernameInput() {
+  usernameInput() {
     return browser.element('input#username');
   }
-  get passwordInput() {
+  passwordInput() {
     return browser.element('input#password');
   }
-  get loginButton() {
+  loginButton() {
     return browser.element('//button[contains(., "Login")]');
   }
 
@@ -20,16 +20,16 @@ class LoginPage extends Page {
   }
 
   waitForloginPageToLoad() {
-    if (!this.usernameInput.isVisible()) {
-      this.usernameInput.waitForVisible();
+    if (!this.usernameInput().isVisible()) {
+      this.usernameInput().waitForVisible();
     }
   }
 
   login(username, password) {
     this.waitForloginPageToLoad();
-    this.usernameInput.setValue(username);
-    this.passwordInput.setValue(password);
-    this.loginButton.click();
+    this.usernameInput().setValue(username);
+    this.passwordInput().setValue(password);
+    this.loginButton().click();
     browser.pause(2000);
   }
 }
