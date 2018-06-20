@@ -1,5 +1,5 @@
-const LoginPage = require('../page_objects/login_page');
-const SecureAreaPage = require('../page_objects/secure_area_page');
+const LoginPage = require('../page_objects/login.page');
+const SecureAreaPage = require('../page_objects/secure.area.page');
 
 const username = 'tomsmith';
 const password = 'SuperSecretPassword!'
