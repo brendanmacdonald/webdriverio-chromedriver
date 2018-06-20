@@ -6,7 +6,10 @@ exports.config = {
     maxInstances: 10,
     capabilities: [{
         maxInstances: 5,
-        browserName: 'chrome'
+        browserName: 'chrome',
+        chromeOptions: {
+            args: ['--headless','--disable-gpu']
+        }
     }],
     sync: true,
     logLevel: 'verbose',
@@ -14,8 +17,8 @@ exports.config = {
     deprecationWarnings: true,
     bail: 0,
     screenshotPath: './errorShots/',
-    baseUrl: 'http://webdriver.io',
-    waitforTimeout: 10000,
+    baseUrl: 'https://the-internet.herokuapp.com/',
+    waitforTimeout: 10000, // Default timeout for all waitFor* commands.
     connectionRetryTimeout: 90000,
     connectionRetryCount: 3,
     services: ['chromedriver'],
@@ -23,13 +26,22 @@ exports.config = {
     path: '/',
     chromeDriverLogs: './logs',
     framework: 'mocha',
-    reporters: ['dot'],
+    reporters: ['mochawesome'],
+    reporterOptions: {
+        mochawesome: {
+            outputDir: './reports/'
+        },
+        mochawesomeOpts: {
+            includeScreenshots: true,
+            screenshotUseRelativePath: true
+        },
+    },
     mochaOpts: {
         ui: 'bdd'
     },
-    before: function() {
+    before: function () {
         var chai = require('chai');
         global.expect = chai.expect;
-        chai.Should();
+        chai.should();
     }
 }

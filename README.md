@@ -1,6 +1,6 @@
-### Start the chromdriver
+### Install the dependencies
 ```
-npm run start_chromedriver
+npm install
 ```
 
 ### Execute tests
