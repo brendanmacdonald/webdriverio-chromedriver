@@ -8,15 +8,19 @@ class LoginPage extends mixin(Page, Footer, Flash) {
   get title() {
     return browser.element('//h2');
   }
+  
   get username() {
     return browser.element('#username');
   }
+
   get password() {
     return browser.element('#password');
   }
+
   get loginButton() {
     return browser.element('//button[contains(., "Login")]');
   }
+
   get loginDiv() {
     return browser.element('div#flash');
   }
