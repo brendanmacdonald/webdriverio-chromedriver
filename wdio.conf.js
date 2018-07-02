@@ -1,6 +1,6 @@
 exports.config = {
     specs: [
-        './tests/**'
+        __dirname + '/tests/**'
     ],
     exclude: [],
     maxInstances: 10,
@@ -8,7 +8,7 @@ exports.config = {
         maxInstances: 5,
         browserName: 'chrome',
         chromeOptions: {
-            args: ['--headless','--disable-gpu']
+            args: ['--disable-gpu']
         }
     }],
     sync: true,
@@ -33,7 +33,8 @@ exports.config = {
         },
     },
     mochaOpts: {
-        ui: 'bdd'
+        ui: 'bdd',
+        timeout: 30000
     },
     before: function () {
         var chai = require('chai');
