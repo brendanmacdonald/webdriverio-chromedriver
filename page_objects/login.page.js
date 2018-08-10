@@ -10,11 +10,11 @@ class LoginPage extends mixin(Page, Footer, Flash) {
   }
   
   get username() {
-    return browser.element('#username');
+    return browser.element("//input[@name='username']");
   }
 
   get password() {
-    return browser.element('#password');
+    return browser.element("//input[@name='password']");
   }
 
   get loginButton() {

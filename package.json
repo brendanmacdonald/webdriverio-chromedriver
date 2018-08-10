@@ -2,21 +2,17 @@
     "name": "webdriverio-testing",
     "version": "0.0.1",
     "scripts": {
-        "test": "wdio wdio.conf.js",
-        "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+        "pretest": "docker-compose -f docker-compose.yml up -d",
+        "test": "sleep 10 && wdio wdio.conf.js",
+        "posttest": "docker-compose down && allure generate allure-results --clean -o allure-report && allure open allure-report"
     },
     "devDependencies": {
         "allure-commandline": "^2.5.0",
         "chai": "^4.1.2",
-        "chromedriver": "^2.40.0",
         "wdio-allure-reporter": "^0.6.2",
-        "wdio-chromedriver-service": "^0.1.3",
         "wdio-mocha-framework": "^0.5.13",
         "wdio-spec-reporter": "^0.1.4",
         "webdriverio": "4.12.0",
         "xmultiple": "^1.0.0"
-    },
-    "dependencies": {
-        "npm": "^6.1.0"
     }
 }
