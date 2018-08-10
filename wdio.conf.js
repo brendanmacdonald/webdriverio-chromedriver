@@ -10,10 +10,6 @@ exports.config = {
         chromeOptions: {
             args: ['--disable-gpu']
         }
-    },
-    {
-        maxInstances: 5,
-        browserName: 'firefox',
     }],
     sync: true,
     logLevel: 'silent',
@@ -25,9 +21,10 @@ exports.config = {
     waitforTimeout: 10000, // Default timeout for all waitFor* commands.
     connectionRetryTimeout: 90000,
     connectionRetryCount: 3,
-    host: '127.0.0.1',
-    port: 4444,
-    path: '/wd/hub',
+    services: ['chromedriver'],
+    port: 9515,
+    path: '/',
+    chromeDriverLogs: './logs',
     framework: 'mocha',
     reporters: ['dot', 'allure', 'spec'],
     reporterOptions: {
